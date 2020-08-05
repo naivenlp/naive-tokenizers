@@ -167,7 +167,7 @@ class VocabBasedTokenizer(AbstractTokenizer):
                 words.append(word)
 
         vocab = set(words)
-        special_tokens = sorted([v for _, v in self._special_tokens])
+        special_tokens = [v for _, v in sorted(self._special_tokens, key=lambda x: x[0])]
         for t in special_tokens:
             if t not in vocab:
                 words.append(t)
